@@ -15,6 +15,31 @@ public class SavingsAccount extends BankAccount{
         // minimum balance is 0 by default
 
     }
+
+    public double getRate() {
+        return rate;
+    }
+
+    public void setRate(double rate) {
+        this.rate = rate;
+    }
+
+    public double getMaxWithdrawalLimit() {
+        return maxWithdrawalLimit;
+    }
+
+    public void setMaxWithdrawalLimit(double maxWithdrawalLimit) {
+        this.maxWithdrawalLimit = maxWithdrawalLimit;
+    }
+
+    public int getnWithdraws() {
+        return nWithdraws;
+    }
+
+    public void setnWithdraws(int nWithdraws) {
+        this.nWithdraws = nWithdraws;
+    }
+
     public void withdraw(double amount) throws Exception {
         if(nWithdraws > maxWithdrawalLimit) {
             throw new Exception("Maximum Withdraw Limit Exceed");

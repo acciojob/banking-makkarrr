@@ -13,7 +13,6 @@ public class SavingsAccount extends BankAccount{
         this.rate = rate;
         this.nWithdraws = 0;
         // minimum balance is 0 by default
-
     }
 
     public double getRate() {
@@ -41,7 +40,7 @@ public class SavingsAccount extends BankAccount{
     }
 
     public void withdraw(double amount) throws Exception {
-        if(nWithdraws > maxWithdrawalLimit) {
+        if(nWithdraws >= maxWithdrawalLimit) {
             throw new Exception("Maximum Withdraw Limit Exceed");
         }
         if(amount > super.getBalance()) {

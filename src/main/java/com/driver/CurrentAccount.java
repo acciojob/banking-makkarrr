@@ -7,6 +7,7 @@ import static java.lang.Math.max;
 
 public class CurrentAccount extends BankAccount{
     String tradeLicenseId; //consists of Uppercase English characters only
+
     public static int minBalance = 5000;
     public CurrentAccount(String name, double balance, String tradeLicenseId) throws Exception {
         super(name, balance, minBalance);
@@ -43,7 +44,27 @@ public class CurrentAccount extends BankAccount{
             List<Character> list = tradeLicenseId.chars()
                     .mapToObj(e -> (char)e)
                     .collect(Collectors.toList());
-            Collections.shuffle(list);
+
+
+            int arr[] = new int[list.size()];
+            int index = 0; //array 0,2,4,6,8,10,12,14,16
+            int index2 = 1;
+            for(var entry:map.entrySet()) { // a:5, b:4, c:7, d:7
+                int freq = entry.getValue();
+                int i=0;
+                for(;i<freq && index<size;i++) { //4
+                    arr[index] = entry.getKey();
+                    index+=2;
+                }
+                if(index >= size) {
+                    for(;i<freq && index2<size;i++) {
+                        arr[index2] = entry.getKey();
+                        index2+=2;
+                    }
+                }
+            }
+
+            //Collections.shuffle(list);
             StringBuilder sb = new StringBuilder();
 
             // Appends characters one by one
